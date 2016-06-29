@@ -10,7 +10,10 @@ Happy Hour will use two APIs, the first one is an API of beverages and the secon
 - http://www.goodreads.com/quotes/tag/drinking
 
 ## Wireframes
-https://wireframe.cc/jsTuoF
+- https://wireframe.cc/jsTuoF
+- https://wireframe.cc/g6jWwF
+- https://wireframe.cc/QNxO44
+
 ## User story
 
 As a user I want to be able to answer a set of questions and be suggested a random drink based on those answers
