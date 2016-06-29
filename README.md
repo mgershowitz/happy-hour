@@ -17,3 +17,5 @@ As a user I want to be able to answer a set of questions and be suggested a rand
 - As a user I want to be able to select a completely random drink
 - As a user I want to be able to pick my base alcohol
 - As a user I want to be able to save my favorite drinks and make comments about them
+- As a user I want to be able to ban drinks from my profile
+- As a user I want to  be able to accept or deny my drink 
