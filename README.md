@@ -16,7 +16,7 @@ Happy Hour will use two APIs, the first one is an API of beverages and the secon
 
 ## User story
 
-As a user I want to be able to answer a set of questions and be suggested a random drink based on those answers
+- As a user I want to be able to answer a set of questions and be suggested a random drink based on those answers
 - As a user I want to be able to select a completely random drink
 - As a user I want to be able to pick my base alcohol
 - As a user I want to be able to save my favorite drinks and make comments about them
