@@ -26,3 +26,4 @@ Happy Hour will use two APIs, the first one is an API of beverages and the secon
 ## Citation
 - How to end a string at a certain character http://stackoverflow.com/questions/9133102/how-to-grab-substring-before-a-specified-character-jquery-or-javascript
 - Data scraper with cheerio
+- connecting to mongo host http://expressjs.com/en/guide/database-integration.html
