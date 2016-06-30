@@ -22,3 +22,7 @@ Happy Hour will use two APIs, the first one is an API of beverages and the secon
 - As a user I want to be able to save my favorite drinks and make comments about them
 - As a user I want to be able to ban drinks from my profile
 - As a user I want to  be able to accept or deny my drink 
+
+## Citation
+- How to end a string at a certain character http://stackoverflow.com/questions/9133102/how-to-grab-substring-before-a-specified-character-jquery-or-javascript
+- Data scraper with cheerio
