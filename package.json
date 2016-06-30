@@ -1,0 +1,33 @@
+{
+  "name": "happy-hour",
+  "version": "1.0.0",
+  "description": "![](https://i.imgflip.com/o0h6q.jpg)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgershowitz/happy-hour.git"
+  },
+  "author": "Matt Gershowitz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mgershowitz/happy-hour/issues"
+  },
+  "homepage": "https://github.com/mgershowitz/happy-hour#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "cheerio": "^0.20.0",
+    "ejs": "^2.4.2",
+    "express": "^4.14.0",
+    "express-session": "^1.13.0",
+    "method-override": "^2.3.6",
+    "mongodb": "^2.1.18",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "request": "^2.72.0"
+  }
+}
