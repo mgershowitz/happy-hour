@@ -14,7 +14,7 @@ This API is broken down into 4 main categories
 * ingredients
 * glass type.  
 
-The drinks will be retrieved using an AJAX call while the end of the URL is contained in a variable. This variable is assigned based on a series of questions they user has answered. These questions and answer choices are as follows:
+The drinks will be retrieved using an request function  and use the filter function to assigned query selectors. This variable is assigned based on a series of questions they user has answered. These questions and answer choices are as follows:
 * question("answers")
 * What was your day like?("Brutal, I worked like a dog", "Meh, I've had better", "I crushed this day!", "Awesome, I'm on vacation!")
 * How do you want to wake up?("Bright eyed and bushy tailed", "I could be a little tired", "On the floor", "With someone else")
