@@ -24,6 +24,7 @@ The drinks will be retrieved using an AJAX call while the end of the URL is cont
 Based upon the answers given, the query parameter variables will be assigned in order to whittle down the selection pool. The filters will assign the base alcohol, certain ingredients, and type of glass. There will also be a button that returns a random drink. Once the drink is called, it will pop up in a modal with a picture(if available) the name of the drink, a random quote from my database, and an option to save to favorites if the user is logged in. 
 
 * http://www.goodreads.com/quotes/tag/drinking
+
 As this isn't a standard API, I wrote a quick scraper to mine the data from the website. Once harvested, I placed them into one large json file with each quote in an object with keys "quote" and "author". I then uploaded the data collection to mongo and pull from there using a random return function. 
 
 ## Wireframes
