@@ -9,7 +9,7 @@ Happy Hour will use two APIs, the first one is an API of beverages and the secon
 ### http://www.thecocktaildb.com/
 
 This API is broken down into 4 main categories
-  * alcoholic/non-alcoholic
+* alcoholic/non-alcoholic
 * category (cocktail, ordinary drink)
 * ingredients
 * glass type.  
