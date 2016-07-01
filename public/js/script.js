@@ -1,18 +1,17 @@
-const drinkGen = require('../../models/cocktails')
 console.log('connected')
-// const randomDrink = ()=>{
-//     $.ajax({
-//       url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=15112',
-//       method: "GET",
-//       dataType: 'json',
-//       success: (data)=>{
-//         console.log(data);
-//       },
-//       error: ()=> {
-//         console.log('error');
-//       }
-//     })
-//   }
+const randomDrink = ()=>{
+    $.ajax({
+      url: '/random',
+      method: "GET",
+      dataType: 'json',
+      success: (data)=>{
+        console.log(data);
+      },
+      error: ()=> {
+        console.log('error');
+      }
+    })
+  }
 // const randomDrink = ()=>{
 //   request('http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=15112', (error, response, body)=>{
 //     if(err) throw err
@@ -30,7 +29,7 @@ console.log('connected')
 $(()=>{
 
 $('input').on('click', (e)=>{
-  drinkGen.randomDrink
+  randomDrink()
 });
 
 
