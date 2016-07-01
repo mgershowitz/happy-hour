@@ -8,10 +8,11 @@ Happy Hour is an app that gives you a set of questions asking about your day and
 Happy Hour will use two APIs, the first one is an API of beverages and the second is a list of drinking quotes.
 * http://www.thecocktaildb.com/
 This API is broken down into 4 main categories
-* alcoholic/non-alcoholic
+  * alcoholic/non-alcoholic
  * category (cocktail, ordinary drink)
  * ingredients
  * glass type.  
+
 The drinks will be retrieved using an AJAX call while the end of the URL is contained in a variable. This variable is assigned based on a series of questions they user has answered. These questions and answer choices are as follows:
 * question("answers")
 * What was your day like?("Brutal, I worked like a dog", "Meh, I've had better", "I crushed this day!", "Awesome, I'm on vacation!")
@@ -19,6 +20,7 @@ The drinks will be retrieved using an AJAX call while the end of the URL is cont
 * Are you sweet or bitter("Candy is Dandy", "I drink only through pursed lips")
 * Are you drinking socially("Hell yea! PARTY!!", "I prefer my own company")
 * What time is it("midday", "evening", "night", "It's 5:00 somewhere") 
+
 Based upon the answers given, the query parameter variables will be assigned in order to whittle down the selection pool. The filters will assign the base alcohol, certain ingredients, and type of glass. There will also be a button that returns a random drink. Once the drink is called, it will pop up in a modal with a picture(if available) the name of the drink, a random quote from my database, and an option to save to favorites if the user is logged in. 
 
 * http://www.goodreads.com/quotes/tag/drinking
