@@ -9,9 +9,9 @@ Happy Hour will use two APIs, the first one is an API of beverages and the secon
 * http://www.thecocktaildb.com/
 This API is broken down into 4 main categories
 * alcoholic/non-alcoholic
-* category (cocktail, ordinary drink)
-* ingredients
-* glass type
+ * category (cocktail, ordinary drink)
+ * ingredients
+ * glass type 
 The drinks will be retrieved using an AJAX call while the end of the URL is contained in a variable. This variable is assigned based on a series of questions they user has answered. These questions and answer choices are as follows:
 * question("answers")
 * What was your day like?("Brutal, I worked like a dog", "Meh, I've had better", "I crushed this day!", "Awesome, I'm on vacation!")
