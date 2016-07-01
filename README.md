@@ -7,7 +7,14 @@ Happy Hour is an app that gives you a set of questions asking about your day and
 ## APIs
 Happy Hour will use two APIs, the first one is an API of beverages and the second is a list of drinking quotes.
 - http://www.thecocktaildb.com/
+This API is broken down into 4 main categories
+-alcoholic/non-alcoholic
+-category (cocktail, ordinary drink)
+-ingredients
+-glass type
+
 - http://www.goodreads.com/quotes/tag/drinking
+As this isn't a standard API, I wrote a quick scraper to mine the data from the website. Once harvested, I placed them into one large json file with each quote in an object with keys "quote" and "author". I then uploaded the data collection to mongo and pull from there using a random return function. 
 
 ## Wireframes
 - https://wireframe.cc/jsTuoF
