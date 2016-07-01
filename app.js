@@ -11,6 +11,7 @@ const request        = require('request');
 const cheerio        = require('cheerio')
 const homeController = require('./controllers/home-controller')
 const userController = require('./controllers/user-controller')
+const urlencodedParser = bodyParser.urlencoded({extended:false})
 const port           = process.env.PORT || 3000
 
 
