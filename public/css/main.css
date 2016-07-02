@@ -1,0 +1,81 @@
+* {
+  text-align: center;
+  display: block;
+  margin: 10px;
+}
+
+img {
+  width:200px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+#modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.75);
+}
+
+#modal section {
+  position: relative;
+  background-color: white;
+  width: 50%;
+  height: 50%;
+  padding: 2em;
+  margin: 0 auto;
+  text-align: left;
+  top: 30%;
+  margin-top: -5%;
+}
+
+#modal li {
+  text-align: left;
+}
+#modal img {
+  float: left;
+  margin-top: 5%;
+  width: 100%;
+}
+
+#drink {
+  height: 100%;
+  width:25%;
+  float:left;
+  margin: 0;
+}
+.quote {
+  font-style: italic;
+}
+
+#bartender {
+  display: inline;
+}
+#welcome {
+  display: none;
+  position: relative;
+  width: 50%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2em;
+  top: 30%;
+}
+#questions {
+  display: none;
+  position: relative;
+  width: 40%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2em;
+  top: 30%;
+}
+#questions ul{
+  display:inline-block;
+}

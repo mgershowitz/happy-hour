@@ -11,6 +11,7 @@ const request        = require('request');
 const cheerio        = require('cheerio')
 const homeController = require('./controllers/home-controller')
 const userController = require('./controllers/user-controller')
+const apiController = require('./controllers/api-controller')
 const urlencodedParser = bodyParser.urlencoded({extended:false})
 const port           = process.env.PORT || 3000
 
@@ -30,8 +31,8 @@ app.use(logger('dev'));
 // app.use(bodyParser.urlencoded({extended:false}));
 //app.use(bodyParser.json())
 app.use('/', homeController);
+app.use('/', apiController)
 app.use('/user', userController)
-
 
 
 

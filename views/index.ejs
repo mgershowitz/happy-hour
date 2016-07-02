@@ -2,10 +2,39 @@
 <html>
 <% include ./partials/head %>
 <body>
-<p>working</p>
-<input type="submit" value="get me a drink">
-<img src="https://img0.etsystatic.com/107/1/8422091/il_214x170.882942172_qmjc.jpg" alt="">
-<button>click me...</button>
-<%=drink%>
+  <h1>Happy Hour</h1>
+  <div>
+    <img src="/img/bartender.jpg" alt="">
+  </div>
+  <div id="bartender">
+    <input type="submit" value="What'll it be?" >
+  </div>
+  <div id='welcome'>
+    <input id='start' type="submit" value="Hmm... not sure" >
+    <input id="random" type="submit" value="Dealer's choice" >
+  </div>
+  <div id="questions">
+    <h5></h5>
+    <table>
+      <tr>
+        <input class="firstRound" id="qOne"type="submit">
+        <input class="firstRound" id="qTwo"type="submit">
+      </tr>
+      <tr>
+        <input class="firstRound" id="qThree"type="submit">
+        <input class="firstRound" id="qFour"type="submit">
+      </tr>
+    </table>
+  </div>
+  <div id='modal'>
+    <section>
+      <div id='drink'>
+        <img src="" alt="">
+        <button>Save</button>
+      </div>
+      <h4>Coming right up</h4>
+      <ul></ul>
+    </section>
+  </div>
 </body>
 </html>
