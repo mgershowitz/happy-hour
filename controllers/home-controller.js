@@ -18,5 +18,15 @@ router.get('/random',  (req,res)=>{
   })
 })
 
+router.get('/api',  (req,res)=>{
+  request({
+    url:'http://www.thecocktaildb.com/api/json/v1/1/lookup.php',
+    method:'get',
+    json:true
+  },(err,result,body)=>{
+    if (err) throw err;
+  res.json(body)
+  })
+})
 
 module.exports = router;

@@ -54,7 +54,7 @@ module.exports = {
     if(err) throw err
       let arr = JSON.parse(body)
       console.log(arr)
-      next()
+
   })
 }
 }
