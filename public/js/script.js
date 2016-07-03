@@ -1,40 +1,68 @@
 console.log('connected')
 
+let responses = [];
+
+const getDrink = ()=>{
+  $.ajax({
+    url: '/drinks',
+    method: "GET",
+    dataType: 'json',
+    success: (data)=>{
+      let i = Math.floor(Math.random()*data.length)
+      $('#drink img').attr('src','http://assets.absolutdrinks.com/drinks/solid-background-white/soft-shadow/floor-reflection/'+data[i].id+'.png')
+      $('#modal h4').text(data[i].name)
+      $('#modal ul').append($('<li>').text(data[i].descriptionPlain))
+      $('#modal ul').append($('<ul>').attr('id','ingredients'));
+      for(let j = 0 ; j < data[i].ingredients.length ; j++) {
+        let $li = $('<li>').text(data[i].ingredients[j].type);
+        $('#ingredients').append($li);
+       }
+      randomQuote();
+    },
+    error: ()=> {
+      console.log('error');
+    }
+  })
+}
+
 const randomDrink = ()=>{
-    $.ajax({
-      url: '/drinks',
-      method: "GET",
-      dataType: 'json',
-      success: (data)=>{
-        let i = Math.floor(Math.random()*data.length)
-        $('#drink img').attr('src','http://assets.absolutdrinks.com/drinks/solid-background-white/soft-shadow/floor-reflection/'+data[i].id+'.png')
-        $('#modal h4').text(data[i].name)
-        $('#modal ul').append($('<li>').text(data[i].descriptionPlain))
-        randomQuote();
-        console.log(data[i].name);
-      },
-      error: ()=> {
-        console.log('error');
-      }
-    })
-  }
+  $.ajax({
+    url: '/drinks',
+    method: "GET",
+    dataType: 'json',
+    success: (data)=>{
+      let i = Math.floor(Math.random()*data.length)
+      $('#drink img').attr('src','http://assets.absolutdrinks.com/drinks/solid-background-white/soft-shadow/floor-reflection/'+data[i].id+'.png')
+      $('#modal h4').text(data[i].name)
+      $('#modal ul').append($('<li>').text(data[i].descriptionPlain))
+      $('#modal ul').append($('<ul>').attr('id','ingredients'));
+      for(let j = 0 ; j < data[i].ingredients.length ; j++) {
+        let $li = $('<li>').text(data[i].ingredients[j].type);
+        $('#ingredients').append($li);
+       }
+      randomQuote();
+    },
+    error: ()=> {
+      console.log('error');
+    }
+  })
+}
 
 const randomQuote = ()=>{
-    $.ajax({
-      url: '/quote',
-      method: "GET",
-      dataType: 'json',
-      success: (data)=>{
-        $('#modal ul').append($('<li>').attr('class', 'quote').text('"'+data.quote.substr(0,200)+'"'))
-        $('#modal ul').append($('<li>').attr('class', 'quote').text('- '+data.author))
-      },
-      error: ()=> {
-        console.log('error');
-      }
-    })
-  }
+  $.ajax({
+    url: '/quote',
+    method: "GET",
+    dataType: 'json',
+    success: (data)=>{
+      $('#desc').append($('<li>').attr('class', 'quote').text('"'+data.quote.substr(0,200)+'"'))
+      $('#desc').append($('<li>').attr('class', 'quote').text('- '+data.author))
+    },
+    error: ()=> {
+      console.log('error');
+    }
+  })
+}
 
-let responses = [];
 
 
 
@@ -63,41 +91,58 @@ $('#start').on('click', (e)=>{
   $('#welcome').fadeToggle('fast', (e)=>{
     $('#questions').fadeToggle('fast')
   })
-})
 
-$('.firstRound').on('click', (e)=>{
-  $('#questions h5').fadeOut(()=>{$(this).text("How do you want to wake up?").fadeIn()});
-  $('#qOne').fadeOut(()=>{$(this).val("Bright eyed and bushy tailed").attr('class', "secondRound").fadeIn()})
-  $('#qTwo').fadeOut(()=>{$(this).val("I could be a little tired").attr('class', "secondRound").fadeIn()})
-  $('#qThree').fadeOut(()=>{$(this).val("On the floor").attr('class', "secondRound").fadeIn()})
-  $('#qFour').fadeOut(()=>{$(this).val("With someone else").attr('class', "secondRound").fadeIn()})
+  $('.firstRound').on('click', (e)=>{
+    $('#questions h5').text("How do you want to wake up?");
+    $('#qOne').val("Bright eyed and bushy tailed").attr('class', "secondRound button")
+    $('#qTwo').val("I could be a little tired").attr('class', "secondRound button")
+    $('#qThree').val("On the floor").attr('class', "secondRound button")
+    $('#qFour').val("With someone else").attr('class', "secondRound button")
 
-  $('.secondRound').on('click', (e)=>{
-    $('#questions h5').fade().text("Are you sweet or bitter?");
-    $('#qOne').fade().val("Candy is Dandy").attr('class', "thirdRound")
-    $('#qTwo').fade().val("I drink only through pursed lips").attr('class', "thirdRound")
-    $('#qThree').fadeOut('fast')//.val('').attr('class', "thirdRound")
-    $('#qFour').fadeOut('fast')//.val('').attr('class', "thirdRound")
+    $('.secondRound').on('click', (e)=>{
+      $('#questions h5').text("Are you sweet or bitter?");
+      $('#qOne').val("Candy is Dandy").attr('class', "thirdRound button")
+      $('#qTwo').val("I drink only through pursed lips").attr('class', "thirdRound button")
+      $('#qThree').fadeOut('fast')//.val('').attr('
+      $('#qFour').fadeOut('fast')
 
-    $('.thirdRound').on('click', (e)=>{
-      $('#questions h5').text('Are you drinking socially');
-      $('#qOne').val("Hell yea! PARTY!!").attr('class', 'fourthRound')
-      $('#qTwo').val("I prefer my own company").attr('class', 'fourthRound')
-      $('#qThree').val('').attr('class', 'fourthRound')
-      $('#qFour').val('').attr('class', 'fourthRound')
+      $('.thirdRound').on('click', (e)=>{
+        $('#questions h5').text('Are you drinking socially');
+        $('#qOne').val("Hell yea! PARTY!!").attr('class', 'fourthRound button')
+        $('#qTwo').val("I prefer my own company").attr('class', 'fourthRound button')
+        $('#qThree').val('').attr('class', 'fourthRound button')
+        $('#qFour').val('').attr('class', 'fourthRound button')
 
-      $('.fourthRound').on('click', (e)=>{
-        $('#questions h5').text('What time is it');
-        $('#qOne').val("midday").attr('class', 'fifthRound')
-        $('#qTwo').val("evening").attr('class', 'fifthRound')
-        $('#qThree').fadeIn().val("night").attr('class', 'fifthRound')
-        $('#qFour').fadeIn().val("It's 5:00 somewhere").attr('class', 'fifthRound')
+        $('.fourthRound').on('click', (e)=>{
+          $('#questions h5').text('What time is it');
+          $('#qOne').val("midday").attr('class', 'fifthRound button')
+          $('#qTwo').val("evening").attr('class', 'fifthRound button')
+          $('#qThree').fadeIn().val("night").attr('class', 'fifthRound button')
+          $('#qFour').fadeIn().val("It's 5:00 somewhere").attr('class', 'fifthRound button')
+
+          $('.fifthRound').on('click', (e)=>{
+            $('#questions h5').text('guess what');
+            $('#drink img').attr('src','/img/shaker.gif')
+            $('#modal h4').text("Coming right up")
+            $('#modal ul').empty();
+            $('#modal').fadeToggle('fast');
+            $('#questions').fadeToggle('fast');
+            $('#welcome').fadeToggle('fast');
+            $('#questions h5').text('What was your day like?')
+            $('#qOne').val("Brutal, I worked like a dog").attr('class', 'firstRound button')
+            $('#qTwo').val("Meh, I've had better").attr('class', 'firstRound button')
+            $('#qThree').val("I crushed this day!").attr('class', 'firstRound button')
+            $('#qFour').val("Awesome, I'm on vacation!").attr('class', 'firstRound button')
+            randomDrink();
+          })
+        })
       })
     })
   })
 })
 
 $('#modal section').on('click', (e)=>{
+  $('.button').off('click')
   $('#modal').fadeToggle('slow');
   $('#welcome').fadeToggle('fast');
   $('#bartender').fadeToggle('fast');

@@ -2,6 +2,11 @@
   text-align: center;
   display: block;
   margin: 10px;
+  /*background-color: rebeccapurple;*/
+}
+
+.button {
+  background-color: rebeccapurple;
 }
 
 img {
@@ -51,6 +56,10 @@ img {
 }
 .quote {
   font-style: italic;
+}
+
+#ingredients li{
+  display: inline-block;
 }
 
 #bartender {
