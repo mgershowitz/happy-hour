@@ -1,0 +1,30 @@
+<header>
+  <div id="nav">
+  <% if(user){ %>
+
+        <form action="/user/profile/<%=user.uName%>" method='get'>
+          <input class="button" type="submit" value="profile">
+        </form>
+
+        <form action="/user/logout?_method=DELETE" method='post'>
+          <input class="button" type="submit" value="logout">
+        </form>
+
+    <% } else { %>
+
+
+          <form action="/user/login" method='post'>
+            <label for="">Username:</label>
+            <input type="text" name='uName'>
+
+            <label for="">Password:</label>
+            <input type="password" name='password'>
+            <input class='button' type="submit" value='login'>
+          </form>
+
+          <form action="/user/new" method='get'>
+            <input class='button' type="submit" value="create new user">
+          </form>
+  <% } %>
+  </div>
+</header>

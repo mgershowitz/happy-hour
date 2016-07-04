@@ -1,9 +1,58 @@
-* {
+body {
+  margin-top: 50px;
+  color: white;
+  font-family: Helvetica;
+  text-shadow: 2px 2px black;
   text-align: center;
   display: block;
   margin: 10px;
-  /*background-color: rebeccapurple;*/
+  background-image: url('/img/bar.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+h1 {
+  margin-top: 100px;
+}
+#tender img{
+  border: 2px white solid;
+}
+#nav {
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: rebeccapurple;
+  text-align: right;
+  padding-top: 15px;
+  box-shadow: 0px 0px 8px 0px black;
+  background-color: rebeccapurple;
+
+}
+
+
+form {
+  display: inline!important;
+  color:white;
+  text-shadow: 2px 2px black;
+  /*margin: 15px 5px;*/
+}
+
+input[type=submit] {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
+  background: white;
+  padding-right: 20px;
+  /*background: white;*/
+
+}
+label{
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 15px;
+}
+
 
 .button {
   background-color: rebeccapurple;
@@ -47,6 +96,7 @@ img {
   margin-top: 5%;
   width: 100%;
 }
+
 
 #drink {
   height: 100%;

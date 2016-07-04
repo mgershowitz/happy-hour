@@ -2,8 +2,16 @@
 <html>
 <% include ./partials/head %>
 <body>
+  <% include ./partials/header %>
   <h1>Happy Hour</h1>
-  <div>
+  <h3>
+  <% if(user){ %>
+    Welcome, <%= user.uName%>
+    <% } else { %>
+    Welcome, stranger
+  <% } %>
+  </h3>
+  <div id="tender">
     <img src="/img/bartender.jpg" alt="">
   </div>
   <div id="bartender">
@@ -30,7 +38,15 @@
     <section>
       <div id='drink'>
         <img src="" alt="">
-        <button>Save</button>
+        <% if(user) { %>
+        <form action="/user/profile/<%user.uName%>" method="post">
+          <input type="submit" class="button" value="save">
+        </form>
+        <% } else { %>
+        <form action="/user/login" method='get'>
+          <input class='button' type="submit" value="login">
+        </form>
+        <% } %>
       </div>
       <h4>Coming right up</h4>
       <ul id='desc'></ul>
