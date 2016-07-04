@@ -9,16 +9,21 @@ body {
   background-image: url('/img/bar.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 h1 {
-  margin-top: 100px;
+  margin-top: 10%;
+  text-shadow: 2px 2px black;
+  position:relative;
+  /*background-color: white;*/
+
 }
 #tender img{
   border: 2px white solid;
 }
 #nav {
 
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   color: rebeccapurple;
@@ -78,6 +83,8 @@ img {
 
 #modal section {
   position: relative;
+  color: black;
+  text-shadow: none;
   background-color: white;
   width: 50%;
   height: 50%;
@@ -89,6 +96,9 @@ img {
 }
 
 #modal li {
+  color: black;
+  margin-right: 5px;
+  display: inline;
   text-align: left;
 }
 #modal img {
@@ -137,4 +147,7 @@ img {
 }
 #questions ul{
   display:inline-block;
+}
+#quote {
+  background-color: white;
 }

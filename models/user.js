@@ -3,6 +3,8 @@ const {MongoClient} = require('mongodb')
 const dbConnection  = 'mongodb://localhost:27017/happy_hour';
 const bcrypt        = require('bcrypt')
 const salt          = bcrypt.genSalt(10);
+const request       = require('request')
+const cheerio       = require('cheerio')
 
 let createSecure = (uName, password, callback) => {
   bcrypt.genSalt((err, salt) => {
@@ -19,7 +21,7 @@ let createUser = (req,res,next) => {
       let userInfo = {
         uName: uName,
         passwordDigest: hash,
-        drinks: ""
+        drinks: []
       }
       db.collection('users').insertOne(userInfo, (err, results) => {
         if(err) throw err;
@@ -48,20 +50,30 @@ let loginUser = (req,res,next) => {
   })
 }
 
-// let saveDrink = (req,res,next) => {
-//     MongoClient.connect(dbConnection, (err, db) => {
-//       let userInfo = {
-//         uName: uName,
-//         passwordDigest: hash
-//       }
-//       db.collection('users').insertOne(userInfo, (err, results) => {
-//         if(err) throw err;
-//         next()
-//       });
-//     });
-//   }
-// }
+let saveDrink = (req,res,next) => {
+    request('/', function(error, response, html){
+      if(!error){
+        let $ = cheerio.load(html);
+        let drink = $('#modal h4').text()
+    MongoClient.connect(dbConnection, (err, db) => {
+    let user = {
+      uName: req.session.user.uName
+      }
 
-module.exports = {createUser, loginUser}
+      db.collection('users').update(user, {$addToSet:{"drinks":drink}}), (err, results) => {
+        if(err) throw err;
+        next()
+      // };
+    // };
+      }
+      })
+    }
+  })
+  }
+
+
+
+
+module.exports = {createUser, loginUser, saveDrink}
 
 

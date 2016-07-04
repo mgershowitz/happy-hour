@@ -1,12 +1,16 @@
 console.log('connected')
 
-let responses = [];
+let drink = "rum"
+let responses = {drink}
 
 const getDrink = ()=>{
   $.ajax({
     url: '/drinks',
     method: "GET",
     dataType: 'json',
+    // data: {
+    //   i: ingredients.type.drink
+    // },
     success: (data)=>{
       let i = Math.floor(Math.random()*data.length)
       $('#drink img').attr('src','http://assets.absolutdrinks.com/drinks/solid-background-white/soft-shadow/floor-reflection/'+data[i].id+'.png')
@@ -18,6 +22,7 @@ const getDrink = ()=>{
         $('#ingredients').append($li);
        }
       randomQuote();
+      console.log(data)
     },
     error: ()=> {
       console.log('error');
@@ -41,6 +46,7 @@ const randomDrink = ()=>{
         $('#ingredients').append($li);
        }
       randomQuote();
+      console.log(data)
     },
     error: ()=> {
       console.log('error');
@@ -84,10 +90,10 @@ $('#bartender').on('click', (e)=>{
 
 $('#start').on('click', (e)=>{
   $('#questions h5').text('What was your day like?')
-  $('#qOne').val("Brutal, I worked like a dog")
-  $('#qTwo').val("Meh, I've had better")
-  $('#qThree').val("I crushed this day!")
-  $('#qFour').val("Awesome, I'm on vacation!")
+  $('#qOne').val("Brutal, I worked like a dog").on('click', (e) => {drink = 'whiskey' })
+  $('#qTwo').val("Meh, I've had better").on('click', (e) => {drink = 'gin' })
+  $('#qThree').val("I crushed this day!").on('click', (e) => {drink = 'vodka' })
+  $('#qFour').val("Awesome, I'm on vacation!").on('click', (e) => {drink = 'rum' })
   $('#welcome').fadeToggle('fast', (e)=>{
     $('#questions').fadeToggle('fast')
   })
@@ -133,12 +139,19 @@ $('#start').on('click', (e)=>{
             $('#qTwo').val("Meh, I've had better").attr('class', 'firstRound button')
             $('#qThree').val("I crushed this day!").attr('class', 'firstRound button')
             $('#qFour').val("Awesome, I'm on vacation!").attr('class', 'firstRound button')
-            randomDrink();
+            getDrink();
           })
         })
       })
     })
   })
+})
+$('#quote').on('click', (e) => {
+  $('#desc').empty()
+  randomQuote()
+  $('#modal').fadeToggle('slow')
+  $('#welcome').fadeToggle();
+  $('#bartender').fadeToggle();
 })
 
 $('#modal section').on('click', (e)=>{

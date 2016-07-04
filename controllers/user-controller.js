@@ -4,6 +4,7 @@ const users                   = require('../models/profile')
 const {createUser, loginUser} = require('../models/user')
 
 
+
 router.get('/profile/:uName', users.user, (req,res) => {
   const filterByUName = res.users.filter((profile) => {
     return profile.uName == req.params.uName

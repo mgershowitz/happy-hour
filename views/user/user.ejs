@@ -2,11 +2,23 @@
 <html>
 <% include ../partials/head %>
 <body>
+<header>
+  <div id="nav">
+  <form action="/" method="get">
+    <input type="submit" value='Grab a drink'>
+  </form>
+        <form action="/user/logout?_method=DELETE" method='post'>
+          <input class="button" type="submit" value="logout">
+        </form>
+
+
+  </div>
+</header>
+<h1><%=user[0].uName %>'s Cabinet</h1>
 <p>working</p>
-<img src="https://img0.etsystatic.com/107/1/8422091/il_214x170.882942172_qmjc.jpg" alt="">
   <div>
     <ul>
-<%=user[0].uName %>
+
     </ul>
   </div>
 </body>
