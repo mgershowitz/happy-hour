@@ -1,6 +1,6 @@
 'use strict'
 const {MongoClient} = require('mongodb')
-const dbConnection  = 'mongodb://localhost:27017/quotes'
+const dbConnection  = process.env['MONGODB_URI'] || 'mongodb://localhost:27017/quotes'
 
 module.exports = {
 quote: (req, res, next)=> {
