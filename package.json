@@ -1,6 +1,9 @@
 {
   "name": "happy-hour",
   "version": "1.0.0",
+  "engines": {
+    "node":  "6.2.1"
+  },
   "description": "![](https://i.imgflip.com/o0h6q.jpg)",
   "main": "app.js",
   "scripts": {
