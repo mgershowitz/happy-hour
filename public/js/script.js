@@ -60,7 +60,7 @@ const randomQuote = ()=>{
     method: "GET",
     dataType: 'json',
     success: (data)=>{
-      if(data.quote.length < 200) {
+      if(data.quote.length > 200) {
         $('#desc').append($('<li>').attr('class', 'quote').text('"'+data.quote.substr(0,200)+'..."'))
       } else {
         $('#desc').append($('<li>').attr('class', 'quote').text('"'+data.quote+'"'))
