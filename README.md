@@ -5,16 +5,11 @@
 Happy Hour is an app that gives you a set of questions asking about your day and suggests the best drink to complement your mood. It also allows you to save your favorite drinks and write comments about them. You also get a great drinking quote to go along with your beverage.
 
 ## APIs
-Happy Hour will use two APIs, the first one is an API of beverages and the second is a list of drinking quotes.
-### http://www.thecocktaildb.com/
+Happy Hour will use two APIs, the first one is the Absolut Drinking Database and is an API of beverages and the second is a list of drinking quotes.
+### http://addb.absolutdrinks.com/docs/
 
-This API is broken down into 4 main categories
-* alcoholic/non-alcoholic
-* category (cocktail, ordinary drink)
-* ingredients
-* glass type.  
-
-The drinks will be retrieved using an request function  and use the filter function to assigned query selectors. This variable is assigned based on a series of questions they user has answered. These questions and answer choices are as follows:
+ 
+The drinks will be retrieved using an request function and then an ajax call to my server, using a filter function to assigned query selectors. This variable is assigned based on a series of questions they user has answered. These questions and answer choices are as follows:
 * question("answers")
 * What was your day like?("Brutal, I worked like a dog", "Meh, I've had better", "I crushed this day!", "Awesome, I'm on vacation!")
 * How do you want to wake up?("Bright eyed and bushy tailed", "I could be a little tired", "On the floor", "With someone else")
