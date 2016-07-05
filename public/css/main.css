@@ -12,7 +12,7 @@ body {
   background-attachment: fixed;
 }
 h1 {
-  margin-top: 10%;
+  margin-top: 5%;
   text-shadow: 2px 2px black;
   position:relative;
   /*background-color: white;*/
@@ -23,8 +23,9 @@ h1 {
 }
 #nav {
 
-  position: absolute;
-  top: 0;
+  position: relative;
+  top: -5;
+  margin-top: -5px;
   width: 100%;
   color: rebeccapurple;
   text-align: right;
