@@ -1,37 +1,39 @@
-'use strict'
-const express          = require('express')
-const app              = express()
-const fs               = require('fs')
-const path             = require('path')
-const logger           = require('morgan')
-const bodyParser       = require('body-parser')
-const session          = require('express-session')
-const methodOverride   = require('method-override')
-const homeController   = require('./controllers/home-controller')
-const userController   = require('./controllers/user-controller')
-const apiController    = require('./controllers/api-controller')
-const urlencodedParser = bodyParser.urlencoded({extended:false})
-const port             = process.env.PORT || 3000
+const express = require('express'),
+  app = express(),
+  path = require('path'),
+  logger = require('morgan'),
+  bodyParser = require('body-parser'),
+  session = require('express-session'),
+  methodOverride = require('method-override'),
+  MongoStore = require('connect-mongo')(session),
+  port = process.env.PORT || 3000;
 
+require('dotenv').config();
 
 app.use(session({
+  isAuthorized: false,
   saveUninitialized: true,
   resave: true,
-  secret: "tacos!",
-  cookie: {maxAge:60000}
+  secret: process.env.SECRET_KEY,
+  cookie: {
+    maxAge: 60000,
+  },
+  store: new MongoStore({
+    url: process.env.MONGODB_URI || 'mongodb://localhost:27017/sessions',
+  }),
 }));
 
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/bower_components', express.static(path.join(__dirname, "/bower_components")));
+app.use('/bower_components', express.static(path.join(__dirname, '/bower_components')));
 app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({
+  extended: false,
+}));
 
-app.use('/', homeController);
-app.use('/', apiController)
-app.use('/user', userController)
+app.use('/', require('./resources'));
 
-app.listen(port, function(){
-  console.log("Server active on port:", port);
-})
+app.listen(port, () => {
+  console.log(`Server active on port: ${port}`);
+});
