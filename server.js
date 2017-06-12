@@ -10,6 +10,14 @@ const express = require('express'),
 
 require('dotenv').config();
 
+
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+app.use(methodOverride('_method'));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(logger('dev'));
 app.use(session({
   isAuthorized: false,
   saveUninitialized: true,
@@ -21,15 +29,6 @@ app.use(session({
   store: new MongoStore({
     url: process.env.MONGODB_URI || 'mongodb://localhost:27017/sessions',
   }),
-}));
-
-app.use(methodOverride('_method'));
-app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/bower_components', express.static(path.join(__dirname, '/bower_components')));
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({
-  extended: false,
 }));
 
 app.use('/', require('./resources'));

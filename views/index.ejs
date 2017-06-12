@@ -6,7 +6,7 @@
   <h1>Happy Hour</h1>
   <h3>
   <% if(user){ %>
-    Welcome, <%= user.uName%>
+    Welcome, <%= user.username%>
     <% } else { %>
     Welcome, stranger
   <% } %>
@@ -39,11 +39,10 @@
       <div id='drink'>
         <img src="" alt="">
         <% if(user) { %>
-        <form action="/" method="post">
-          <input type="submit" class="button" value="save">
-        </form>
+          <button id="save-drink">Save</button>
+          <!-- <input type="submit" class="button" value="save"> -->
         <% } else { %>
-        <form action="/user/login" method='get'>
+        <form action="/users/login" method='get'>
           <input class='button' type="submit" value="login">
         </form>
         <% } %>

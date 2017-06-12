@@ -7,19 +7,26 @@
   <form action="/" method="get">
     <input type="submit" value='Grab a drink'>
   </form>
-        <form action="/user/logout?_method=DELETE" method='post'>
+        <form action="/users/logout" method='post'>
           <input class="button" type="submit" value="logout">
         </form>
 
 
   </div>
 </header>
-<h1><%=user[0].uName %>'s Cabinet</h1>
+<h1><%= userId.username %>'s Cabinet</h1>
 <p>working</p>
   <div>
-    <ul>
-
-    </ul>
+    <% user.forEach(drink => { %>
+        <h4><%= drink.name %></h4>
+        <p><%= drink.description %></p>
+        <p><%= drink.ingredients %></p>
+        <img src="<%= drink.image %>" alt="">
+        <form method="POST" action="/users/delete?_method=DELETE">
+            <input type="hidden" name="drink[id]" value="<%= drink.id %>">
+            <button>drink</button>
+        </form>
+    <% }) %>
   </div>
 </body>
 </html>

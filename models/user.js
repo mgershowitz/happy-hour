@@ -1,79 +1,51 @@
-'use strict'
-const {MongoClient} = require('mongodb')
-const dbConnection  = process.env['MONGODB_URI'] || 'mongodb://localhost:27017/happy_hour';
-const bcrypt        = require('bcrypt')
-const salt          = bcrypt.genSalt(10);
-const request       = require('request')
-const cheerio       = require('cheerio')
+const bcrypt = require('bcrypt'),
 
-let createSecure = (uName, password, callback) => {
-  bcrypt.genSalt((err, salt) => {
-    bcrypt.hash(password,salt, (err, hash) => {
-      callback(uName,hash);
-    })
-  })
-}
+  db = require('../config/database'),
 
-let createUser = (req,res,next) => {
-  createSecure(req.body.uName, req.body.password, saveUser)
-  function saveUser(uName, hash) {
-    MongoClient.connect(dbConnection, (err, db) => {
-      let userInfo = {
-        uName: uName,
-        passwordDigest: hash,
-        drinks: []
-      }
-      db.collection('users').insertOne(userInfo, (err, results) => {
-        if(err) throw err;
-        next()
-      });
-    });
-  }
-}
+  User = {};
 
-let loginUser = (req,res,next) => {
-  let uName = req.body.uName;
-  let password = req.body.password;
+User.findByUsername = (user) => {
+  return db.oneOrNone(`
+      SELECT * FROM users
+      WHERE username = $1
+  `, user);
+};
 
-  MongoClient.connect(dbConnection, (err, db) => {
-    db.collection('users')
-      .findOne({"uName":uName}, (err, user) => {
-      if (err) throw err
-      if (user === null) {
-        console.log("can't find user with name",uName)
-      } else if (bcrypt.compareSync(password, user.passwordDigest)) {
-        console.log("signed in",uName)
-        res.user = user;
-      }
-      next();
-    })
-  })
-}
+User.create = (user) => {
+  user.password = bcrypt.hashSync(user.password, 10);
 
-let saveDrink = (req,res,next) => {
-    request('/', function(error, response, html){
-      if(!error){
-        let $ = cheerio.load(html);
-        let drink = $('#modal h4').text()
-    MongoClient.connect(dbConnection, (err, db) => {
-    let user = {
-      uName: req.session.user.uName
-      }
+  return db.one(`
+    INSERT INTO users
+    (username, email, password)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+  `, [user.username, user.email, user.password]);
+};
 
-      db.collection('users').update(user, {$addToSet:{"drinks":drink}}), (err, results) => {
-        if(err) throw err;
-        next()
-      // };
-    // };
-      }
-      })
-    }
-  })
-  }
+User.findById = (user_id) => {
+  return db.manyOrNone(`
+      SELECT * FROM favorite_drinks
+      JOIN users
+      ON users.id = favorite_drinks.user_id
+      WHERE user_id = 3;
+  `, user_id);
+};
 
+User.saveDrink = (user, drink) => {
+  return db.one(`
+    INSERT INTO favorite_drinks
+    (name, description, ingredients, image, user_id)
+    VALUES
+    ($1, $2, $3, $4, $5)
+    RETURNING *;`, [drink.name, drink.desc, drink.ingredients, drink.image, user]);
+};
 
+User.deleteDrink = (user, drink) => {
+  return db.none(`
+    DELETE FROM favorite_drinks
+    WHERE user_id = $1
+    AND id = $2;`, [user, drink]);
+};
 
-
-module.exports = {createUser, loginUser, saveDrink}
-
+module.exports = User;
 

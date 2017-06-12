@@ -57,10 +57,10 @@ const randomDrink = () => {
     const i = Math.floor(Math.random() * data.length);
     $('#drink img').attr('src', `http://assets.absolutdrinks.com/drinks/solid-background-white/soft-shadow/floor-reflection/${data[i].id}.png`);
     $('#modal h4').text(data[i].name);
-    $('#modal ul').append($('<li>').text(data[i].descriptionPlain));
+    $('#modal ul').append($('<li>').addClass('drink-desc').text(data[i].descriptionPlain));
     $('#modal ul').append($('<ul>').attr('id', 'ingredients'));
     for (let j = 0; j < data[i].ingredients.length; j++) {
-      const $li = $('<li>').text(data[i].ingredients[j].type);
+      const $li = $('<li>').addClass('ingredient').text(data[i].ingredients[j].type);
       $('#ingredients').append($li);
     };
     randomQuote();
@@ -68,7 +68,30 @@ const randomDrink = () => {
   .catch(err => console.log(err));
 };
 
+const saveDrinkToProfile = () => {
+  drink = {
+    name: $('#modal h4').text(),
+    desc: $('.drink-desc').text(),
+    ingredients: $('.ingredient').text(),
+    image: $('#drink img').attr('src'),
+  };
+
+  $.ajax({
+    url: '/users/save-drink',
+    type: 'POST',
+    data: drink,
+  })
+  .then(() => {
+    console.log("success");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+};
+
 $(() => {
+
+  $('#save-drink').on('click', saveDrinkToProfile);
 
   $('#bartender').on('click', () => {
     $('#bartender').fadeToggle('fast', () => {

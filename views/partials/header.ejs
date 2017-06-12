@@ -1,31 +1,31 @@
 <header>
   <div id="nav">
-  <button id='quote'>Advice</button>
+  <button id="quote">Advice</button>
 
   <% if(user){ %>
 
-        <form action="/user/profile/<%=user.uName%>" method='get'>
+        <form action="/users/profile/<%=user.uName%>" method="get">
           <input class="button" type="submit" value="profile">
         </form>
 
-        <form action="/user/logout?_method=DELETE" method='post'>
+        <form action="/users/logout?_method=DELETE" method="post">
           <input class="button" type="submit" value="logout">
         </form>
 
     <% } else { %>
 
 
-          <form action="/user/login" method='post'>
-            <label for="">Username:</label>
-            <input type="text" name='uName'>
+          <form action="/users/login" method="get">
+           <!--  <label for="">Username:</label>
+            <input type="text" name="uName">
 
             <label for="">Password:</label>
-            <input type="password" name='password'>
-            <input class='button' type="submit" value='login'>
+            <input type="password" name="password"> -->
+            <input class="button" type="submit" value="login">
           </form>
 
-          <form action="/user/new" method='get'>
-            <input class='button' type="submit" value="create new user">
+          <form action="/users/new" method="get">
+            <input class="button" type="submit" value="Sign Up">
           </form>
   <% } %>
   </div>
